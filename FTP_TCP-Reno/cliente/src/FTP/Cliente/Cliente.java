@@ -16,8 +16,7 @@ import java.net.UnknownHostException;
 import static java.lang.System.exit;
 
 public class Cliente extends JFrame{
-
-
+    int i;
     GridBagLayout gbl;
     GridBagConstraints gbc;
 
