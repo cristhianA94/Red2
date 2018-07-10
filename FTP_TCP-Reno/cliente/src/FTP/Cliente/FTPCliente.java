@@ -112,44 +112,6 @@ public class FTPCliente {
         ventana_grafo_reno.setVisible(true);
     }
 
-    void ReceiveFile(String file_remoto, String file_local) throws Exception // recibe archivos
-    {
-        String fileName = file_remoto;
-        /*System.out.print("Introduzca el nombre del archivo :");
-        fileName = br.readLine();*/
-        dout.writeUTF(fileName);
-        String msgFromServer = din.readUTF();
-
-        if (msgFromServer.compareTo("Archivo no encontrado") == 0) {
-            JOptionPane.showMessageDialog(null, "Archivo no encontrado en el servidor...", "Archivo no encontrado en Servidor", JOptionPane.ERROR_MESSAGE);
-            return;
-        } else if (msgFromServer.compareTo("LISTO") == 0) {
-            JOptionPane.showMessageDialog(null,"Recepción de archivo...", "Recibiendo archivo", JOptionPane.INFORMATION_MESSAGE);
-            File f = new File(file_local);
-            if (f.exists()) {
-                int opcion = JOptionPane.showConfirmDialog(null, "El archivo ya existe. ¿Desea sobrescribir?", "Archivo local ya existe", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (opcion == JOptionPane.NO_OPTION || opcion == JOptionPane.CLOSED_OPTION || opcion == JOptionPane.CANCEL_OPTION) {
-                    dout.flush();
-                    return;
-                }
-            }
-            Cliente.cliente.jtxtArea.setText("");
-            FileOutputStream fout = new FileOutputStream(f);
-            int ch;
-            String temp;
-            do {
-                temp = din.readUTF();
-                ch = Integer.parseInt(temp);
-                if (ch != -1) {
-                    fout.write(ch);
-                }
-            } while (ch != -1);
-            fout.close();
-            Cliente.cliente.jtxtArea.append(din.readUTF());
-        }
-
-    }
-
     public void ListFiles() throws IOException {
         String archivo = din.readUTF();
         ArrayList<String> archivos = new ArrayList<>();
