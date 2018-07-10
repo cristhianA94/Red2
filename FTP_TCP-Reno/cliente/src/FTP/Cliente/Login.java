@@ -50,19 +50,19 @@ public class Login extends JFrame {
         String campo_direccion = "";
         byte[] direccion = ip.getAddress();
         boolean primer_octeto = true;
-        String seperador, formato_byte;
+        String separador, formato_byte;
         if (ip instanceof Inet4Address) {
-            seperador = ".";
+            separador = ".";
             formato_byte = "%d";
         } else if (ip instanceof Inet6Address) {
-            seperador = ":";
+            separador = ":";
             formato_byte = "%2x";
         } else {
             throw new InvalidParameterException("Version de IP disconocido.");
         }
         for (byte octeto : direccion) {
             if (primer_octeto) primer_octeto = false;
-            else campo_direccion += seperador;
+            else campo_direccion += separador;
             campo_direccion += String.format(formato_byte, octeto);
         }
         return campo_direccion;
@@ -94,7 +94,7 @@ public class Login extends JFrame {
         this.add(jlIPServidor, gbc);
 
         jtfIPServidor = new JTextField(10);
-        jtfIPServidor.setText("192.168.15.1");
+        jtfIPServidor.setText("172.0.0.2");
         gbc.gridx = COL_2;
         this.add(jtfIPServidor, gbc);
 
