@@ -157,7 +157,7 @@ public class Cliente extends JFrame{
         gbc.gridy = fila++;
         this.add(jbtnSeleccionar, gbc);
 
-        String[] comandos = {"Seleccionar", "Enviar", "Recibir", "Listar", "Salir"};
+        String[] comandos = {"Seleccionar", "Enviar", "Listar", "Salir"};
         jcbxComandos = new JComboBox(comandos);
         gbc.gridx = COL_1;
         gbc.gridwidth = 1;
@@ -178,9 +178,6 @@ public class Cliente extends JFrame{
                     if (comando.equals("Enviar")) {
                         dout.writeUTF("SEND");
                         ftpCliente.SendFile(Cliente.this.jTxtArchivosLocal.getText());
-                    } else if (comando.equals("Recibir")) {
-                        dout.writeUTF("GET");
-                        ftpCliente.ReceiveFile((String)Cliente.this.jcbxLista.getSelectedItem(), Cliente.this.jTxtArchivosLocal.getText());
                     } else if (comando.equals("Listar")) {
                         dout.writeUTF("LIST");
                         ftpCliente.ListFiles();
