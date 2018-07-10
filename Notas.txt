@@ -1,0 +1,3 @@
+Configurar la red entre los equipos antes de usar
+Cambiar la IP por la mia
+ARchivo usado por el servidor
